@@ -1,0 +1,55 @@
+{
+  "request": {
+    "url": "/stock/TWTR/chart/3d?token=123",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [
+      {
+        "close": 66.02,
+        "high": 66.73,
+        "low": 64.65,
+        "open": 65.24,
+        "symbol": "TWTR",
+        "volume": 15830105,
+        "date": "2021-07-19"
+      },
+      {
+        "close": 67.94,
+        "high": 68.54,
+        "low": 65.82,
+        "open": 66.25,
+        "symbol": "TWTR",
+        "volume": 11583922,
+        "date": "2021-07-20"
+      },
+      {
+        "close": 69.54,
+        "high": 69.77,
+        "low": 67.55,
+        "open": 67.59,
+        "symbol": "TWTR",
+        "volume": 10082850,
+        "date": "2021-07-21"
+      }
+    ],
+    "headers": {
+      "Server": "nginx",
+      "Date": "Thu, 08 Aug 2019 14:14:08 GMT",
+      "Content-Type": "application/json; charset=utf-8",
+      "Connection": "keep-alive",
+      "set-cookie": "ctoken=4decd1e639244d498ef3bacaae5238bc; Domain=.iextrading.com; Path=/; Expires=Fri, 09 Aug 2019 02:14:08 GMT; Secure",
+      "Content-Security-Policy": "default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com https://api.iextrading.com https://api.iextrading.com wss://iextrading.com wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com https://iextrading.com/member-center; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js;",
+      "X-Content-Security-Policy": "default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com https://api.iextrading.com https://api.iextrading.com wss://iextrading.com wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com https://iextrading.com/member-center; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js;",
+      "Frame-Options": "SAMEORIGIN",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Strict-Transport-Security": "max-age=15768000",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+    }
+  }
+}

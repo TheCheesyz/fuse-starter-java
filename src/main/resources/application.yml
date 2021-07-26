@@ -48,6 +48,7 @@ spring:
    rest:
       # this points at the local WireMock server in the test environment.
       iexBasePath: http://localhost:${wiremock.server.port}/
+      iexNewBasePath: https://localhost:${wiremock.server.port}/
 
 ---
 # Dev properties go here
