@@ -1,4 +1,6 @@
 {
+  "id": "c8e2ec70-7e3d-4a4d-9a4b-18ae7ea4a835",
+  "name": "stock_twtr_chart_3d",
   "request": {
     "url": "/stock/TWTR/chart/3d?token=123",
     "method": "GET"
@@ -7,39 +9,40 @@
     "status": 200,
     "jsonBody": [
       {
-        "close": 66.02,
-        "high": 66.73,
-        "low": 64.65,
-        "open": 65.24,
+        "close": 71.69,
+        "high": 73.34,
+        "low": 69.88,
+        "open": 72.2,
         "symbol": "TWTR",
-        "volume": 15830105,
-        "date": "2021-07-19"
-      },
-      {
-        "close": 67.94,
-        "high": 68.54,
-        "low": 65.82,
-        "open": 66.25,
-        "symbol": "TWTR",
-        "volume": 11583922,
-        "date": "2021-07-20"
-      },
-      {
-        "close": 69.54,
-        "high": 69.77,
-        "low": 67.55,
-        "open": 67.59,
-        "symbol": "TWTR",
-        "volume": 10082850,
-        "date": "2021-07-21"
+        "volume": 44275797,
+        "id": "HISTORICAL_PRICES",
+        "key": "TWTR",
+        "subkey": "",
+        "date": "2021-07-23",
+        "updated": 1627089609000,
+        "changeOverTime": 0,
+        "marketChangeOverTime": 0,
+        "uOpen": 72.2,
+        "uClose": 71.69,
+        "uHigh": 73.34,
+        "uLow": 69.88,
+        "uVolume": 44275797,
+        "fOpen": 72.2,
+        "fClose": 71.69,
+        "fHigh": 73.34,
+        "fLow": 69.88,
+        "fVolume": 44275797,
+        "label": "Jul 23, 21",
+        "change": 0,
+        "changePercent": 0
       }
     ],
     "headers": {
       "Server": "nginx",
-      "Date": "Thu, 08 Aug 2019 14:14:08 GMT",
+      "Date": "Mon, 26 Jul 2021 17:55:15 GMT",
       "Content-Type": "application/json; charset=utf-8",
       "Connection": "keep-alive",
-      "set-cookie": "ctoken=4decd1e639244d498ef3bacaae5238bc; Domain=.iextrading.com; Path=/; Expires=Fri, 09 Aug 2019 02:14:08 GMT; Secure",
+      "Set-Cookie": "ctoken=cea7ffcbf2b644b09b2afbbd512c8f0e; Max-Age=43200; Path=/; Expires=Tue, 27 Jul 2021 05:55:15 GMT",
       "Content-Security-Policy": "default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com https://api.iextrading.com https://api.iextrading.com wss://iextrading.com wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com https://iextrading.com/member-center; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js;",
       "X-Content-Security-Policy": "default-src 'self'; child-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline'; font-src data:; frame-src 'self'; connect-src 'self' https://auth.iextrading.com https://api.iextrading.com https://api.iextrading.com wss://iextrading.com wss://tops.iextrading.com wss://api.iextrading.com wss://iextrading.com https://iextrading.com/member-center; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google-analytics.com/analytics.js;",
       "Frame-Options": "SAMEORIGIN",
@@ -49,7 +52,10 @@
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": "true",
       "Access-Control-Allow-Methods": "GET, OPTIONS",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Request-Source"
     }
-  }
+  },
+  "uuid": "c8e2ec70-7e3d-4a4d-9a4b-18ae7ea4a835",
+  "persistent": true,
+  "insertionIndex": 5
 }
