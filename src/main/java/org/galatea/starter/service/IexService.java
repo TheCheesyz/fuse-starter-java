@@ -58,7 +58,11 @@ public class IexService {
    */
   public List<IexHistoricalPrice> getHistoricalPricesForSymbol(final String symbol,
       final String range, final String token) {
-    return iexNewClient.getHistoricalPricesForSymbol(symbol, range, token);
+    if ("".equals(symbol) || "".equals(range) || "".equals(token)) {
+      return Collections.emptyList();
+    } else {
+      return iexNewClient.getHistoricalPricesForSymbol(symbol, range, token);
+    }
   }
 
 }
