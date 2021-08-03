@@ -26,12 +26,15 @@ import org.springframework.util.CollectionUtils;
 public class IexService {
 
   @NonNull
-  private IexClient iexClient;
+  private final IexClient iexClient;
   @NonNull
-  private IexNewClient iexNewClient;
+  private final IexNewClient iexNewClient;
 
   @NonNull
   IexHistoricalPriceRpsy historicalRspy;
+
+  @NonNull
+  private final List<LocalDate> holidays;
 
   /**
    * Get all stock symbols from IEX.
@@ -76,7 +79,7 @@ public class IexService {
       List<LocalDate> datesOverRange = initialDate.datesUntil(today).collect(Collectors.toList());
       List<IexHistoricalPrice> pricesOverRange = new ArrayList<>();
       for (LocalDate date: datesOverRange) {
-        if(date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY){
+        if(holidays.contains(date) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY){
           continue;
         }
         Optional<IexHistoricalPrice> datePrice = historicalRspy.findById(symbol.toUpperCase() + date);
@@ -89,13 +92,25 @@ public class IexService {
       }
 
       if(queryInDB){
+        log.info("Elements for symbol: "+symbol+", range: "+range+" retrieved from local storage.");
         return pricesOverRange;
       }else{
         List<IexHistoricalPrice> pricesForSymbol = iexNewClient.getHistoricalPricesForSymbol(symbol, range, token);
-        for(IexHistoricalPrice historicalPrice : pricesForSymbol){
-          historicalPrice.setSymbolAndDate(historicalPrice.getSymbol()+historicalPrice.getDate());
-          historicalRspy.save(historicalPrice);
+        int dataCount = 0;
+        for(LocalDate date : datesOverRange){
+          if(holidays.contains(date) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY){
+            continue;
+          }
+          IexHistoricalPrice historicalPrice = pricesForSymbol.get(dataCount);
+          if(!date.toString().equals(historicalPrice.getDate())){
+            holidays.add(date);
+          }else{
+            dataCount++;
+            historicalPrice.setSymbolAndDate(historicalPrice.getSymbol()+historicalPrice.getDate());
+            historicalRspy.save(historicalPrice);
+          }
         }
+        log.info("Elements for symbol: "+symbol+", range: "+range+" retrieved via IEX request, then stored locally.");
         return pricesForSymbol;
       }
     }
@@ -109,6 +124,9 @@ public class IexService {
    * @return starting date or null if cannot be calculated from given range.
    */
   private LocalDate calculateStartingDate(LocalDate today, String range){
+    if(range.equals("ytd")){
+      return LocalDate.of(today.getYear(), 1, 1);
+    }
     String[] rangeSplit = range.split("(?<=\\d)(?=\\D)");
     int timeSpanAmount = Integer.parseInt(rangeSplit[0]);
     char timeSpanSize = rangeSplit[1].charAt(0);
