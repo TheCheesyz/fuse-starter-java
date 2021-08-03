@@ -87,7 +87,7 @@ public class IexRestControllerTest extends ASpringTest {
 
     MvcResult result = this.mvc.perform(
         org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-            .get("/iex/historicalPrices?symbol=TWTR&range=3d&token=123")
+            .get("/iex/historicalPrices?symbol=TWTR&range=3d")
             .accept(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$[0].symbol", is("TWTR")))
@@ -101,7 +101,7 @@ public class IexRestControllerTest extends ASpringTest {
 
     MvcResult result = this.mvc.perform(
         org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-            .get("/iex/historicalPrices?symbol=&range=3d&token=123")
+            .get("/iex/historicalPrices?symbol=&range=3d")
             .accept(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$", is(Collections.emptyList())))
@@ -113,19 +113,7 @@ public class IexRestControllerTest extends ASpringTest {
 
     MvcResult result = this.mvc.perform(
         org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-            .get("/iex/historicalPrices?symbol=TWTR&range=&token=123")
-            .accept(MediaType.APPLICATION_JSON_VALUE))
-        .andExpect(status().isOk())
-        .andExpect(jsonPath("$", is(Collections.emptyList())))
-        .andReturn();
-  }
-
-  @Test
-  public void testGetHistoricalPricesNoToken() throws Exception {
-
-    MvcResult result = this.mvc.perform(
-        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-            .get("/iex/historicalPrices?symbol=TWTR&range=3d&token=")
+            .get("/iex/historicalPrices?symbol=TWTR&range=")
             .accept(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$", is(Collections.emptyList())))

@@ -14,6 +14,7 @@ import org.galatea.starter.domain.IexHistoricalPrice;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
 import org.galatea.starter.domain.rpsy.IexHistoricalPriceRpsy;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -24,15 +25,14 @@ import org.springframework.util.CollectionUtils;
 @Service
 @RequiredArgsConstructor
 public class IexService {
+  private static final String TOKEN = "pk_eab4a048d00140c197d90565e3c5161f";
 
   @NonNull
   private final IexClient iexClient;
   @NonNull
   private final IexNewClient iexNewClient;
-
   @NonNull
   IexHistoricalPriceRpsy historicalRspy;
-
   @NonNull
   private final List<LocalDate> holidays;
 
@@ -68,8 +68,8 @@ public class IexService {
    *     range.
    */
   public List<IexHistoricalPrice> getHistoricalPricesForSymbol(final String symbol,
-      final String range, final String token) {
-    if ("".equals(symbol) || "".equals(range) || "".equals(token)) {
+      final String range) {
+    if ("".equals(symbol) || "".equals(range)) {
       return Collections.emptyList();
     } else {
 
@@ -95,7 +95,7 @@ public class IexService {
         log.info("Elements for symbol: "+symbol+", range: "+range+" retrieved from local storage.");
         return pricesOverRange;
       }else{
-        List<IexHistoricalPrice> pricesForSymbol = iexNewClient.getHistoricalPricesForSymbol(symbol, range, token);
+        List<IexHistoricalPrice> pricesForSymbol = iexNewClient.getHistoricalPricesForSymbol(symbol, range, TOKEN);
         int dataCount = 0;
         for(LocalDate date : datesOverRange){
           if(holidays.contains(date) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY){

@@ -76,4 +76,4 @@ spring:
 ---
 # Mappings for Rest Controllers
 webservice:
-  halpath: /hal
+   halpath: /hal

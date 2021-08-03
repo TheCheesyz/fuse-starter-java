@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * A Feign Declarative REST Client to access endpoints from the Free and Open IEX API to get market
  * data. Contains path for new API services IexClient class lacks.
  */
-@FeignClient(name = "IEXnew", url = "${spring.rest.iexNewBasePath}")
+@FeignClient(name = "iexNew", url = "${spring.rest.iexNewBasePath}")
 public interface IexNewClient {
 
   /**

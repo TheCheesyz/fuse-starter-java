@@ -62,9 +62,8 @@ public class IexRestController {
       MediaType.APPLICATION_JSON_VALUE})
   public List<IexHistoricalPrice> getHistoricalPrices(
       @RequestParam(value = "symbol") final String symbol,
-      @RequestParam(value = "range") final String range,
-      @RequestParam(value = "token") final String token) {
-    return iexService.getHistoricalPricesForSymbol(symbol, range, token);
+      @RequestParam(value = "range") final String range) {
+    return iexService.getHistoricalPricesForSymbol(symbol, range);
   }
 
 }

@@ -2,7 +2,7 @@
   "id": "c8e2ec70-7e3d-4a4d-9a4b-18ae7ea4a835",
   "name": "stock_twtr_chart_3d",
   "request": {
-    "url": "/stock/TWTR/chart/3d?token=123",
+    "url": "/stock/TWTR/chart/3d?token=pk_eab4a048d00140c197d90565e3c5161f",
     "method": "GET"
   },
   "response": {
