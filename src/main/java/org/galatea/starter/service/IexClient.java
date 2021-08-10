@@ -31,5 +31,4 @@ public interface IexClient {
    */
   @GetMapping("/tops/last")
   List<IexLastTradedPrice> getLastTradedPriceForSymbols(@RequestParam("symbols") String[] symbols);
-
 }

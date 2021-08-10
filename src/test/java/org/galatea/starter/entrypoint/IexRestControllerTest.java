@@ -81,4 +81,43 @@ public class IexRestControllerTest extends ASpringTest {
         .andExpect(jsonPath("$", is(Collections.emptyList())))
         .andReturn();
   }
+
+  @Test
+  public void testGetHistoricalPrices() throws Exception {
+
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("/iex/historicalPrices?symbol=TWTR&range=3d")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].symbol", is("TWTR")))
+        .andExpect(jsonPath("$[0].low").value(new BigDecimal("69.88")))
+        .andExpect(jsonPath("$[0].high").value(new BigDecimal("73.34")))
+        .andReturn();
+  }
+
+  @Test
+  public void testGetHistoricalPricesNoSymbol() throws Exception {
+
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("/iex/historicalPrices?symbol=&range=3d")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$", is(Collections.emptyList())))
+        .andReturn();
+  }
+
+  @Test
+  public void testGetHistoricalPricesNoRange() throws Exception {
+
+    MvcResult result = this.mvc.perform(
+        org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+            .get("/iex/historicalPrices?symbol=TWTR&range=")
+            .accept(MediaType.APPLICATION_JSON_VALUE))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$", is(Collections.emptyList())))
+        .andReturn();
+  }
+
 }

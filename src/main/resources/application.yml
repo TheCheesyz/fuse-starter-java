@@ -11,6 +11,9 @@ spring:
       # http://www.h2database.com/html/tutorial.html#using_server
       url: jdbc:h2:mem:testtest
       driver-class-name: org.h2.Driver
+   h2:
+      console:
+         enabled: true
    jpa:
       hibernate:
          ddl-auto: update
@@ -25,6 +28,7 @@ mvc:
    iex:
       getAllSymbolsPath: /iex/symbols
       getLastTradedPricePath: /iex/lastTradedPrice
+      getHistoricalPricesPath: /iex/historicalPrices
    max-size-trace-payload: 50000
 jms:
    listener-concurrency: 1-5
@@ -47,6 +51,7 @@ spring:
    rest:
       # this points at the local WireMock server in the test environment.
       iexBasePath: http://localhost:${wiremock.server.port}/
+      iexNewBasePath: http://localhost:${wiremock.server.port}/
 
 ---
 # Dev properties go here
@@ -57,6 +62,9 @@ spring:
       password:
    rest:
       iexBasePath: https://api.iextrading.com/1.0
+      iexNewBasePath: https://cloud.iexapis.com/stable
+
+
 # set debug to get spring to log the classpath (and other things) on startup
 debug: true
 
@@ -71,4 +79,4 @@ spring:
 ---
 # Mappings for Rest Controllers
 webservice:
-  halpath: /hal
+   halpath: /hal
